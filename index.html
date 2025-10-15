@@ -5,81 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SYSFORNATION — Seminar Data Science</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#ffffff;
-      --muted:#f5f5f5;
-      --ink:#111111;
-      --muted-ink:#6b6b6b;
-      --radius:12px;
-      --container:1100px;
-      --gap:24px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;
-      line-height:1.5;padding:40px 20px;
-      display:flex;align-items:flex-start;justify-content:center;
-    }
-    .wrap{max-width:var(--container);width:100%}
-
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
-    .brand{display:flex;align-items:center;gap:16px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#fafafa,#f0f0f0);display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:18px;font-weight:600;border:1px solid #eee}
-    .brand h1{font-family:Playfair Display,serif;margin:0;font-size:18px;letter-spacing:1px}
-    .meta{font-size:13px;color:var(--muted-ink)}
-
-    /* Hero */
-    .hero{display:flex;gap:40px;align-items:center;justify-content:space-between;margin-bottom:40px}
-    .hero-left{flex:1;min-width:280px}
-    .eyebrow{font-size:13px;color:var(--muted-ink);text-transform:uppercase;letter-spacing:1px}
-    .title{font-family:Playfair Display,serif;font-size:44px;margin:10px 0}
-    .subtitle{color:var(--muted-ink);max-width:620px}
-    .cta{margin-top:20px}
-    .btn{display:inline-block;padding:12px 20px;border-radius:10px;border:1px solid #111;background:transparent;color:var(--ink);text-decoration:none;font-weight:600}
-
-    /* Right card */
-    .card{background:var(--muted);padding:20px;border-radius:12px;border:1px solid #efefef;min-width:320px}
-    .card h3{margin:0 0 8px 0;font-size:16px}
-    .card p{margin:0;color:var(--muted-ink);font-size:14px}
-
-    /* Grid sections */
-    .grid{display:grid;grid-template-columns:1fr 420px;gap:var(--gap)}
-    .section{background:transparent}
-    .info-cards{display:flex;gap:16px;margin-top:20px}
-    .info{flex:1;background:#fff;border:1px solid #eee;padding:18px;border-radius:10px}
-    .info h4{margin:0 0 6px 0;font-size:15px}
-    .info p{margin:0;color:var(--muted-ink);font-size:13px}
-
-    /* form */
-    form{background:#fff;border:1px solid #eee;padding:20px;border-radius:12px;margin-top:20px}
-    label{display:block;font-size:13px;color:var(--muted-ink);margin-bottom:8px}
-    input[type=text],input[type=email],input[type=tel],select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;font-size:14px}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .muted-note{font-size:13px;color:var(--muted-ink);margin-top:8px}
-    .small{font-size:13px;color:var(--muted-ink)}
-    .submit-row{display:flex;gap:12px;align-items:center;margin-top:14px}
-    .btn-primary{background:var(--ink);color:white;border:none}
-    .btn-ghost{background:transparent;border:1px solid #ddd}
-
-    footer{margin-top:48px;padding-top:24px;border-top:1px solid #f0f0f0;color:var(--muted-ink);font-size:13px}
-
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.4);display:none;align-items:center;justify-content:center}
-    .modal{background:#fff;padding:22px;border-radius:12px;max-width:420px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
-    .ticket{border:1px dashed #e6e6e6;padding:12px;border-radius:8px;margin-top:10px}
-
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr;}
-      .hero{flex-direction:column;align-items:flex-start}
-      .card{width:100%}
-      .row{grid-template-columns:1fr}
-    }
-  </style>
+  
 </head>
 <body>
   <div class="wrap">
@@ -138,13 +66,26 @@
           <input id="npm" type="text" placeholder="" required>
 
           <label for="semester" style="margin-top:12px">Semester</label>
-          <input id="semester" type="text" placeholder="" required>
+          <select id="semester" required>
+            <option value="" disabled selected>Pilih Semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
 
           <label for="phone" style="margin-top:12px">No. WhatsApp</label>
           <input id="phone" type="tel" placeholder="" required>
 
+          <label for="email" style="margin-top:12px">Email</label>
+          <input id="email" type="email" placeholder="" required>
+
           <div class="submit-row">
-            <button type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+            <button id="submitBtn" type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
             <button type="button" class="btn btn-ghost" onclick="resetForm()">Reset</button>
           </div>
 
@@ -158,96 +99,23 @@
     </footer>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal (re-used) -->
   <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal">
-      <h3>Pendaftaran Berhasil</h3>
-      <p class="small">Simpan tiket ini. Kami juga akan mengirimkan konfirmasi melalui email/WA.</p>
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Pendaftaran Berhasil</h3>
+      <p class="small">Silakan bergabung ke Grup WhatsApp untuk informasi selanjutnya.</p>
 
       <div id="ticketBox" class="ticket">
-        <!-- will be populated -->
+        <!-- populated by JS -->
       </div>
 
       <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
         <button class="btn btn-ghost" onclick="closeModal()">Tutup</button>
-        <button id="downloadBtn" class="btn btn-primary">Download Tiket</button>
+        <button id="joinBtn" class="btn btn-primary">Gabung Grup WhatsApp</button>
       </div>
     </div>
   </div>
 
-  <script>
-    // ====== Simple client-side behavior: validate & generate ticket ======
-    function uid(len=6){
-      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      let s=''; for(let i=0;i<len;i++) s+=chars[Math.floor(Math.random()*chars.length)]; return s;
-    }
-
-    function handleSubmit(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const instansi = document.getElementById('instansi').value.trim();
-      const studentId = document.getElementById('studentId').value.trim();
-      const isIbi = document.getElementById('confirmIbi').checked;
-
-      // basic validation
-      if(!name||!email||!phone||!instansi){alert('Mohon lengkapi semua kolom yang wajib.');return}
-
-      // determine status
-      let status = 'Terverifikasi (Gratis)';
-      if(!isIbi){status = 'Daftar Tunggu';}
-
-      const code = 'SF-'+uid(8);
-      const ticket = {
-        code, name, email, phone, instansi, studentId: studentId||'-', status,
-        mode: 'Hybrid'
-      };
-
-      showTicket(ticket);
-
-      // NOTE: this example does not send server-side. Integrate with backend to persist registrasi.
-      return false;
-    }
-
-    function showTicket(t){
-      const box = document.getElementById('ticketBox');
-      // Use Google Chart API to render a QR code (client-side image URL)
-      const qrData = encodeURIComponent(JSON.stringify({code:t.code,name:t.name,email:t.email}));
-      const qrUrl = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl='+qrData;
-
-      box.innerHTML = `
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="flex:1">
-            <div style="font-weight:600">${t.name}</div>
-            <div style="font-size:13px;color:#777;margin-top:6px">${t.instansi} · ${t.mode}</div>
-            <div style="margin-top:8px;font-size:13px">Kode: <strong>${t.code}</strong></div>
-            <div style="margin-top:6px;font-size:13px;color:#555">Status: ${t.status}</div>
-          </div>
-          <div>
-            <img src="${qrUrl}" alt="QR ticket" width="120" height="120" style="border-radius:8px;border:1px solid #efefef">
-          </div>
-        </div>
-      `;
-
-      // show modal
-      const modal = document.getElementById('modal'); modal.style.display='flex';
-
-      // prepare download
-      const dl = document.getElementById('downloadBtn');
-      dl.onclick = ()=>downloadTicket(t);
-    }
-
-    function downloadTicket(t){
-      const text = `SYSFORNATION - Seminar Data Science\nNama: ${t.name}\nInstansi: ${t.instansi}\nKode: ${t.code}\nStatus: ${t.status}\nMode: ${t.mode}\n`;
-      const blob = new Blob([text],{type:'text/plain'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `${t.code}_ticket.txt`; a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function closeModal(){document.getElementById('modal').style.display='none'}
-    function resetForm(){document.getElementById('form').reset();}
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
