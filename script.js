@@ -5,6 +5,7 @@ const WA_GROUP_URL = "https://chat.whatsapp.com/BJyQDn8RejHKQimqL0ZtuE";
 // ====== UI: Loading Button ======
 function setLoading(isLoading) {
   const btn = document.getElementById('submitBtn');
+  if (!btn) return;
   if (isLoading) {
     btn.disabled = true;
     btn.innerHTML = 'Mengirim... <span class="spinner" aria-hidden="true"></span>';
@@ -42,6 +43,7 @@ async function handleSubmit(e) {
   setLoading(true);
 
   try {
+    // mode: 'no-cors' used to avoid CORS blocking when using simple Google Apps Script webapp
     await fetch(WEB_APP_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -55,6 +57,7 @@ async function handleSubmit(e) {
   showSuccessModal(payload);
   document.getElementById('form').reset();
 
+  // short delay to show the "Mengirim..." state
   setTimeout(() => {
     setLoading(false);
     isSubmitting = false;
@@ -64,12 +67,13 @@ async function handleSubmit(e) {
 // ====== MODAL ======
 function showSuccessModal(t) {
   const box = document.getElementById('ticketBox');
+  if (!box) return;
   box.innerHTML = `
-    <div style="font-weight:600">${t.name}</div>
-    <div style="font-size:13px;color:#777;margin-top:6px">Semester ${t.semester}</div>
-    <div style="font-size:13px;color:#777;margin-top:6px">NPM: ${t.npm}</div>
-    <div style="margin-top:6px;font-size:13px;color:#555">No. WA: ${t.phone}</div>
-    <div style="margin-top:6px;font-size:13px;color:#555">Email: ${t.email}</div>
+    <div style="font-weight:600">${escapeHtml(t.name)}</div>
+    <div style="font-size:13px;color:#777;margin-top:6px">Semester ${escapeHtml(t.semester)}</div>
+    <div style="font-size:13px;color:#777;margin-top:6px">NPM: ${escapeHtml(t.npm)}</div>
+    <div style="margin-top:6px;font-size:13px;color:#555">No. WA: ${escapeHtml(t.phone)}</div>
+    <div style="margin-top:6px;font-size:13px;color:#555">Email: ${escapeHtml(t.email)}</div>
     <div class="success-badge">Pendaftaran Berhasil ✅</div>
   `;
 
@@ -77,6 +81,7 @@ function showSuccessModal(t) {
   const modal = modalWrapper.querySelector('.modal');
 
   modalWrapper.style.display = 'flex';
+  modalWrapper.setAttribute('aria-hidden', 'false');
   requestAnimationFrame(() => {
     modal.classList.add('show');
   });
@@ -90,9 +95,21 @@ function closeModal() {
   const modalWrapper = document.getElementById('modal');
   const modal = modalWrapper.querySelector('.modal');
   modal.classList.remove('show');
+  modalWrapper.setAttribute('aria-hidden', 'true');
   setTimeout(() => {
     modalWrapper.style.display = 'none';
   }, 360);
+}
+
+// tiny helper to avoid inserting raw HTML from inputs
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 // ====== Reset ======
@@ -102,8 +119,15 @@ function resetForm() {
 
 // ====== Attach Event ======
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('form')?.addEventListener('submit', handleSubmit);
-  document.getElementById('modal').addEventListener('click', (ev) => {
+  const formEl = document.getElementById('form');
+  formEl?.addEventListener('submit', handleSubmit);
+
+  document.getElementById('resetBtn')?.addEventListener('click', resetForm);
+
+  // close modal when clicking outside content
+  document.getElementById('modal')?.addEventListener('click', (ev) => {
     if (ev.target === ev.currentTarget) closeModal();
   });
+
+  document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
 });

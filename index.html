@@ -4,30 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SYSFORNATION — Seminar Data Science</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <img class="logo" src="image/Hima_sistem_informasi.png" alt="">
-        <img class="logo" src="image/Logo IBI Kesatuan 2022.png" alt="">
+        <img class="logo" src="image/Hima_sistem_informasi.png" alt="Logo Hima">
+        <img class="logo" src="image/Logo IBI Kesatuan 2022.png" alt="Logo IBI Kesatuan">
         <div>
           <h1>SYSFORNATION</h1>
+          <div class="meta">Seminar Data Science • Hybrid</div>
         </div>
       </div>
     </header>
 
-    <main class="grid">
+    <main class="grid" id="mainGrid">
+      <!-- LEFT COLUMN -->
       <section class="section">
         <div class="hero-left">
           <div class="eyebrow">SYSFORNATION. (Information System For The Nation)</div>
           <h2 class="title">“Sistem Informasi sebagai Pendorong Smart Society 5.0: Peluang dan Tantangan”</h2>
-          <p class="subtitle">Perkembangan teknologi informasi yang semakin pesat telah membawa perubahan dalam berbagai aspek kehidupan. Sebagai mahasiswa Program Studi Sistem Informasi, kami perlu membekali diri untuk beradaptasi di era Society 5.0. Era ini merupakan konsep yang mengintegrasikan kemajuan teknologi seperti Kecerdasan Buatan (AI) dan Big Data untuk menyelesaikan masalah sosial serta meningkatkan kualitas hidup berkelanjutan.
-Melalui kegiatan SYSFORNATION. (Information System For The Nation) dengan mengusung tema “Sistem Informasi sebagai Pendorong Smart Society 5.0: Peluang dan Tantangan”, diharapkan mahasiswa Program Studi Sistem Informasi dapat memperoleh wawasan yang mendalam, pengetahuan terkini, serta motivasi yang kuat untuk mempersiapkan diri menghadapi tantangan sekaligus peluang di era digitalisasi yang terus berkembang. <strong>hybrid</strong>: hadir secara langsung atau lewat live stream.</p>
+
+          <p class="subtitle">
+            Perkembangan teknologi informasi yang semakin pesat telah membawa perubahan dalam berbagai aspek kehidupan. Sebagai mahasiswa Program Studi Sistem Informasi, kami perlu membekali diri untuk beradaptasi di era Society 5.0. Era ini merupakan konsep yang mengintegrasikan kemajuan teknologi seperti Kecerdasan Buatan (AI) dan Big Data untuk menyelesaikan masalah sosial serta meningkatkan kualitas hidup berkelanjutan.
+            Melalui kegiatan SYSFORNATION dengan tema tersebut, diharapkan mahasiswa memperoleh wawasan dan motivasi untuk mempersiapkan diri menghadapi tantangan di era digital. <strong>Hybrid</strong>: hadir secara langsung atau lewat live stream.
+          </p>
+
           <div class="cta">
             <a class="btn" href="#form">Daftar Sekarang</a>
           </div>
@@ -43,62 +52,78 @@ Melalui kegiatan SYSFORNATION. (Information System For The Nation) dengan mengus
             </div>
           </div>
 
-          <div style="margin-top:20px;color:var(--muted-ink);font-size:13px">
-            <strong>Catatan:</strong> Pendaftaran <em>gratis</em> khusus <strong>Mahasiswa IBI Kesatuan</strong>. Peserta lain dapat mendaftar untuk daftar tunggu.
-          </div>
+          <form id="form">
+            <h3 style="margin-top:18px">Form Pendaftaran</h3>
+
+            <label for="name">Nama Lengkap</label>
+            <input id="name" name="name" type="text" placeholder="" required>
+
+            <label for="npm" style="margin-top:12px">NPM</label>
+            <input id="npm" name="npm" type="text" placeholder="" required>
+
+            <label for="semester" style="margin-top:12px">Semester</label>
+            <select id="semester" name="semester" required>
+              <option value="" disabled selected>Pilih Semester</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+
+            <label for="phone" style="margin-top:12px">No. WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="" required>
+
+            <label for="email" style="margin-top:12px">Email</label>
+            <input id="email" name="email" type="email" placeholder="" required>
+
+            <div class="submit-row">
+              <button id="submitBtn" type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+              <button id="resetBtn" type="button" class="btn btn-ghost">Reset</button>
+            </div>
+
+            <div class="muted-note">Dengan mendaftar, kamu setuju untuk menerima informasi acara lewat WhatsApp.</div>
+          </form>
         </div>
       </section>
 
+      <!-- RIGHT COLUMN -->
       <aside>
         <div class="card">
           <h3>Detail Acara</h3>
           <p>Topik: Intro to Data Science, Data Wrangling, Model Sederhana, dan Etika Data.</p>
-          <div class="aside2" style="height:12px"></div>
-            <h3>Speakers</h3>
-            <p class="small">Pembicara dari akademisi dan praktisi industri (nama-nama akan diumumkan).</p>
-            <div class="logo-speakers">
-              <img class="logo2" src="data:image/jpeg;base64,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" alt="">
-              <img class="logo2" src="image/pak pingky prodi si.jpeg" alt="">
-              <img class="logo2" src="image/Hima_sistem_informasi.png" alt="">
-              <img class="logo2" src="image/Hima_sistem_informasi.png" alt="">
+
+          <div style="height:12px"></div>
+
+          <h3>Speakers</h3>
+          <p class="small">Pembicara dari akademisi dan praktisi industri (foto & nama menyusul).</p>
+
+          <!-- Speakers grid 2x2 -->
+          <div class="speakers-grid" aria-label="Daftar pembicara">
+            <div class="speaker">
+              <div class="speaker-thumb placeholder"></div>
+              <p class="speaker-name">Pembicara 1</p>
             </div>
-        </div>
 
-        <form id="form" onsubmit="return handleSubmit(event)">
-          <h3 style="margin-top:18px">Form Pendaftaran</h3>
+            <div class="speaker">
+              <div class="speaker-thumb placeholder"></div>
+              <p class="speaker-name">Pembicara 2</p>
+            </div>
 
-          <label for="name">Nama Lengkap</label>
-          <input id="name" type="text" placeholder="" required>
+            <div class="speaker">
+              <div class="speaker-thumb placeholder"></div>
+              <p class="speaker-name">Pembicara 3</p>
+            </div>
 
-          <label for="npm" style="margin-top:12px">NPM</label>
-          <input id="npm" type="text" placeholder="" required>
-
-          <label for="semester" style="margin-top:12px">Semester</label>
-          <select id="semester" required>
-            <option value="" disabled selected>Pilih Semester</option>
-            <option value="1">Semester 1</option>
-            <option value="2">Semester 2</option>
-            <option value="3">Semester 3</option>
-            <option value="4">Semester 4</option>
-            <option value="5">Semester 5</option>
-            <option value="6">Semester 6</option>
-            <option value="7">Semester 7</option>
-            <option value="8">Semester 8</option>
-          </select>
-
-          <label for="phone" style="margin-top:12px">No. WhatsApp</label>
-          <input id="phone" type="tel" placeholder="" required>
-
-          <label for="email" style="margin-top:12px">Email</label>
-          <input id="email" type="email" placeholder="" required>
-
-          <div class="submit-row">
-            <button id="submitBtn" type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
-            <button type="button" class="btn btn-ghost" onclick="resetForm()">Reset</button>
+            <div class="speaker">
+              <div class="speaker-thumb placeholder"></div>
+              <p class="speaker-name">Pembicara 4</p>
+            </div>
           </div>
-
-          <div class="muted-note">Dengan mendaftar, kamu setuju untuk menerima informasi acara lewat WhatsApp.</div>
-        </form>
+        </div>
       </aside>
     </main>
 
@@ -107,23 +132,24 @@ Melalui kegiatan SYSFORNATION. (Information System For The Nation) dengan mengus
     </footer>
   </div>
 
-  <!-- Modal (re-used) -->
-  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
+  <!-- Modal -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal" role="document" aria-labelledby="modalTitle">
       <h3 id="modalTitle">Pendaftaran Berhasil</h3>
       <p class="small">Silakan bergabung ke Grup WhatsApp untuk informasi selanjutnya.</p>
 
-      <div id="ticketBox" class="ticket">
+      <div id="ticketBox" class="ticket" aria-live="polite">
         <!-- populated by JS -->
       </div>
 
       <div style="display:flex;gap:10px;margin-top:12px;justify-content:flex-end">
-        <button class="btn btn-ghost" onclick="closeModal()">Tutup</button>
+        <button class="btn btn-ghost" id="closeModalBtn">Tutup</button>
         <button id="joinBtn" class="btn btn-primary">Gabung Grup WhatsApp</button>
       </div>
     </div>
   </div>
 
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
