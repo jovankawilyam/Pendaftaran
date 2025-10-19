@@ -20,10 +20,12 @@
 
     /* Header */
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px}
-    .brand{display:flex;align-items:center;gap:16px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#fafafa,#f0f0f0);display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:18px;font-weight:600;border:1px solid #eee}
+    .brand{display:flex;align-items:center;gap:16px; width: 16px;} 
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#fafafa,#f0f0f0);display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:18px;font-weight:600;border:1px solid #eee; display: flex; flex-direction: column;}
     .brand h1{font-family:Playfair Display,serif;margin:0;font-size:18px;letter-spacing:1px}
     .meta{font-size:13px;color:var(--muted-ink)}
+    .header-content { display: flex; gap: 10px; align-items: center;}
+    .aside2 {display: flex;}
 
     /* Hero */
     .hero{display:flex;gap:40px;align-items:center;justify-content:space-between;margin-bottom:40px}
@@ -32,12 +34,25 @@
     .title{font-family:Playfair Display,serif;font-size:44px;margin:10px 0}
     .subtitle{color:var(--muted-ink);max-width:620px}
     .cta{margin-top:20px}
-    .btn{display:inline-block;padding:12px 20px;border-radius:10px;border:1px solid var(--primary);background:transparent;color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer}
+    .btn{display:inline-block;padding:12px 20px;border-radius:10px;border:1px solid var(--primary);background:transparent;color:var(--ink);text-decoration:none;font-weight:600;cursor:pointer  }
+    .btn:hover {
+      background-color: gray;
+      color: white;
+      transition: ease 0.5s;
+    }
+    .logo2{width:56px;height:56px;border-radius:50px;background:linear-gradient(180deg,#fafafa,#f0f0f0);display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:18px;font-weight:600;border:1px solid #eee; display: flex; flex-direction: column;}
 
     /* Right card */
     .card{background:var(--muted);padding:20px;border-radius:12px;border:1px solid #efefef;min-width:320px}
     .card h3{margin:0 0 8px 0;font-size:16px}
     .card p{margin:0;color:var(--muted-ink);font-size:14px}
+    .speakers-img{width:100%;border-radius:8px;margin-top:12px}
+    .logo-speakers {
+      display: flex;
+      gap: 30px;
+      margin-top: 12px;
+    }
+    
 
     /* Grid sections */
     .grid{display:grid;grid-template-columns:1fr 420px;gap:var(--gap)}
