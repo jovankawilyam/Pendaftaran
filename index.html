@@ -27,21 +27,24 @@
 
     <main class="grid" id="mainGrid">
       <!-- LEFT COLUMN -->
-      <section class="section">
+      <section class="section" id="leftSection">
         <div class="hero-left">
-          <div class="eyebrow">SYSFORNATION. (Information System For The Nation)</div>
-          <h2 class="title">“Sistem Informasi sebagai Pendorong Smart Society 5.0: Peluang dan Tantangan”</h2>
+          <div class="eyebrow">SYSFORNATION. ( Information System For The Nation )</div>
+          <h2 class="title">"Sistem Informasi sebagai Pendorong Smart Society 5.0 Peluang dan Tantangan"</h2>
 
           <p class="subtitle">
             Perkembangan teknologi informasi yang semakin pesat telah membawa perubahan dalam berbagai aspek kehidupan. Sebagai mahasiswa Program Studi Sistem Informasi, kami perlu membekali diri untuk beradaptasi di era Society 5.0. Era ini merupakan konsep yang mengintegrasikan kemajuan teknologi seperti Kecerdasan Buatan (AI) dan Big Data untuk menyelesaikan masalah sosial serta meningkatkan kualitas hidup berkelanjutan.
-            Melalui kegiatan SYSFORNATION dengan tema tersebut, diharapkan mahasiswa memperoleh wawasan dan motivasi untuk mempersiapkan diri menghadapi tantangan di era digital. <strong>Hybrid</strong>: hadir secara langsung atau lewat live stream.
+            Melalui kegiatan SYSFORNATION dengan tema tersebut, diharapkan mahasiswa memperoleh wawasan dan motivasi untuk mempersiapkan diri menghadapi tantangan di era digital. 
+            <br><br>
+            <strong>Hybrid</strong>: hadir secara langsung atau lewat <i>Zoom Meeting</i>.
           </p>
 
           <div class="cta">
             <a class="btn" href="#form">Daftar Sekarang</a>
           </div>
 
-          <div class="info-cards">
+          <!-- NOTE: info-cards is the element we use as the insertion point on mobile -->
+          <div class="info-cards" id="infoCards">
             <div class="info">
               <h4>Tanggal & Waktu</h4>
               <p>29 November 2025 / 07.30 - 12.00 WIB</p>
@@ -56,29 +59,25 @@
             <h3 style="margin-top:18px">Form Pendaftaran</h3>
 
             <label for="name">Nama Lengkap</label>
-            <input id="name" name="name" type="text" placeholder="" required>
+            <input id="name" name="name" type="text" placeholder="Masukkan nama lengkap" required>
 
             <label for="npm" style="margin-top:12px">NPM</label>
-            <input id="npm" name="npm" type="text" placeholder="" required>
+            <input id="npm" name="npm" type="text" placeholder="Masukkan NPM" required>
 
             <label for="semester" style="margin-top:12px">Semester</label>
             <select id="semester" name="semester" required>
               <option value="" disabled selected>Pilih Semester</option>
               <option value="1">Semester 1</option>
-              <option value="2">Semester 2</option>
               <option value="3">Semester 3</option>
-              <option value="4">Semester 4</option>
               <option value="5">Semester 5</option>
-              <option value="6">Semester 6</option>
               <option value="7">Semester 7</option>
-              <option value="8">Semester 8</option>
             </select>
 
             <label for="phone" style="margin-top:12px">No. WhatsApp</label>
-            <input id="phone" name="phone" type="tel" placeholder="" required>
+            <input id="phone" name="phone" type="tel" placeholder="Contoh: 081234567890" required>
 
             <label for="email" style="margin-top:12px">Email</label>
-            <input id="email" name="email" type="email" placeholder="" required>
+            <input id="email" name="email" type="email" placeholder="Masukkan email aktif" required>
 
             <div class="submit-row">
               <button id="submitBtn" type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
@@ -90,37 +89,33 @@
         </div>
       </section>
 
-      <!-- RIGHT COLUMN -->
-      <aside>
+      <!-- RIGHT COLUMN (PEMBICARA) -->
+      <aside id="speakersAside">
         <div class="card">
-          <h3>Detail Acara</h3>
-          <p>Topik: Intro to Data Science, Data Wrangling, Model Sederhana, dan Etika Data.</p>
-
-          <div style="height:12px"></div>
-
-          <h3>Speakers</h3>
-          <p class="small">Pembicara dari akademisi dan praktisi industri (foto & nama menyusul).</p>
+          <h3>PEMBICARA</h3>
+          <p class="small">Pembicara dari akademisi dan praktisi industri.</p>
 
           <!-- Speakers grid 2x2 -->
-          <div class="speakers-grid" aria-label="Daftar pembicara">
+          <div class="speakers-grid">
             <div class="speaker">
-              <div class="speaker-thumb placeholder"></div>
-              <p class="speaker-name">Pembicara 1</p>
+              <img class="speaker-img" src="image/pak pingky prodi si.jpeg" alt="Foto Pembicara 1">
+              <div class="speaker-name">Dr. Andi Wijaya</div>
+              <div class="speaker-title">Dosen & Peneliti Data Science</div>
             </div>
-
             <div class="speaker">
-              <div class="speaker-thumb placeholder"></div>
-              <p class="speaker-name">Pembicara 2</p>
+              <img class="speaker-img" src="image/pak pingky prodi si.jpeg" alt="Foto Pembicara 2">
+              <div class="speaker-name">Siti Rahmawati, M.Kom</div>
+              <div class="speaker-title">Praktisi Big Data Analytics</div>
             </div>
-
             <div class="speaker">
-              <div class="speaker-thumb placeholder"></div>
-              <p class="speaker-name">Pembicara 3</p>
+              <img class="speaker-img" src="image/pak pingky prodi si.jpeg" alt="Foto Pembicara 3">
+              <div class="speaker-name">Budi Santoso</div>
+              <div class="speaker-title">Data Scientist di TechCorp</div>
             </div>
-
             <div class="speaker">
-              <div class="speaker-thumb placeholder"></div>
-              <p class="speaker-name">Pembicara 4</p>
+              <img class="speaker-img" src="image/pak pingky prodi si.jpeg" alt="Foto Pembicara 4">
+              <div class="speaker-name">Lina Marlina</div>
+              <div class="speaker-title">AI Specialist di InnovateX</div>
             </div>
           </div>
         </div>
@@ -128,7 +123,7 @@
     </main>
 
     <footer>
-      © SYSFORNATION — Seminar Data Science •
+      © SYSFORNATION — Seminar Data Science
     </footer>
   </div>
 

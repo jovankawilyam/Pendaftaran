@@ -15,6 +15,34 @@ function setLoading(isLoading) {
   }
 }
 
+// ====== Form Validation ======
+function validateForm(name, npm, semester, phone, email) {
+  if (!name || !npm || !semester || !phone || !email) {
+    alert('Mohon lengkapi semua kolom.');
+    return false;
+  }
+  
+  // Validate NPM (numeric and at least 8 digits)
+  if (!/^\d{8,}$/.test(npm)) {
+    alert('NPM harus terdiri dari angka minimal 8 digit.');
+    return false;
+  }
+  
+  // Validate phone number (Indonesian format)
+  if (!/^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(phone)) {
+    alert('Format nomor WhatsApp tidak valid. Gunakan format Indonesia.');
+    return false;
+  }
+  
+  // Validate email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Format email tidak valid.');
+    return false;
+  }
+  
+  return true;
+}
+
 // ====== MAIN: Submit Handler ======
 let isSubmitting = false;
 
@@ -29,8 +57,7 @@ async function handleSubmit(e) {
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
 
-  if (!name || !npm || !semester || !phone || !email) {
-    alert('Mohon lengkapi semua kolom.');
+  if (!validateForm(name, npm, semester, phone, email)) {
     isSubmitting = false;
     return;
   }
@@ -43,7 +70,6 @@ async function handleSubmit(e) {
   setLoading(true);
 
   try {
-    // mode: 'no-cors' used to avoid CORS blocking when using simple Google Apps Script webapp
     await fetch(WEB_APP_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -57,7 +83,6 @@ async function handleSubmit(e) {
   showSuccessModal(payload);
   document.getElementById('form').reset();
 
-  // short delay to show the "Mengirim..." state
   setTimeout(() => {
     setLoading(false);
     isSubmitting = false;
@@ -86,9 +111,13 @@ function showSuccessModal(t) {
     modal.classList.add('show');
   });
 
-  document.getElementById('joinBtn').onclick = () => {
+  // focus the join button for accessibility
+  const joinBtn = document.getElementById('joinBtn');
+  joinBtn.onclick = () => {
     window.open(WA_GROUP_URL, '_blank');
   };
+  // small delay to ensure element is visible before focusing
+  setTimeout(() => joinBtn.focus(), 300);
 }
 
 function closeModal() {
@@ -117,8 +146,31 @@ function resetForm() {
   document.getElementById('form').reset();
 }
 
+// ====== Move Aside (PEMBICARA) for Mobile <= 900px ======
+// Behavior required:
+// - Desktop (>900px): aside is a sibling column on the right (original layout).
+// - Mobile (<=900px): aside (PEMBICARA) should appear BEFORE the .info-cards inside the left section.
+function moveAsideBasedOnWidth() {
+  const aside = document.getElementById('speakersAside');
+  const heroLeft = document.querySelector('.hero-left');
+  const infoCards = document.getElementById('infoCards');
+  const mainGrid = document.getElementById('mainGrid');
+
+  if (window.innerWidth <= 900) {
+    if (aside.parentElement !== heroLeft) {
+      heroLeft.insertBefore(aside, infoCards);
+    }
+  } else {
+    if (aside.parentElement !== mainGrid) {
+      mainGrid.appendChild(aside);
+    }
+  }
+}
+
+
 // ====== Attach Event ======
 document.addEventListener('DOMContentLoaded', () => {
+  // form handlers
   const formEl = document.getElementById('form');
   formEl?.addEventListener('submit', handleSubmit);
 
@@ -130,4 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+
+  // initial placement and on resize
+  moveAsideBasedOnWidth();
+  window.addEventListener('resize', () => {
+    // debounce-ish minimal: throttle by using requestAnimationFrame
+    requestAnimationFrame(moveAsideBasedOnWidth);
+  });
 });
